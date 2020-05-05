@@ -1,9 +1,12 @@
 //recursive approach
 
-#include <iostream>
+// #include <iostream>
   
-int main(){
+// int main(){
     
+class Solution {
+public:
+
     int firstBadVersion(int n) {
         return fBV(1,n);
       }
@@ -18,3 +21,4 @@ int main(){
         return  fBV(mid+1, e);    // else value would be in seconf half
     
     }
+};
