@@ -1,3 +1,10 @@
+package day 6;
+
+// public class sol {
+    
+// }
+
+
 class Solution {
     public int majorityElement(int[] nums) {
            //moores voting algorithm
