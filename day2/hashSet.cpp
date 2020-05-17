@@ -13,3 +13,5 @@ public:
     }
 };
 
+
+// A HashSet holds a set of objects, but in a way that it allows you to easily and quickly determine whether an object is already in the set or not. It does so by internally managing an array and storing the object using an index which is calculated from the hashcode of the object
