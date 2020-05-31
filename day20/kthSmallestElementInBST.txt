@@ -34,11 +34,11 @@ Constraints:
 
 The number of elements of the BST is between 1 to 10^4.
 You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
-   Hide Hint #1  
+   Hint #1  
 Try to utilize the property of a BST.
-   Hide Hint #2  
+  Hint #2  
 Try in-order traversal. (Credits to @chan13)
-   Hide Hint #3  
+    Hint #3  
 What if you could modify the BST node's structure?
-   Hide Hint #4  
+   Hint #4  
 The optimal runtime complexity is O(height of BST).
