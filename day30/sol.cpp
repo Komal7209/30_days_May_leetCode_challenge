@@ -1,33 +1,38 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+//using heap
+
+
+struct ComparePoints{
+    bool operator()(const vector <int>& p1, const vector<int>& p2){
+        return (p1[0]*p1[0] + p1[1]*p1[1]) < (p2[0]*p2[0] + p2[1]*p2[1]);
+    }
+};
+
+
 class Solution {
 public:
-    int kthSmallest(TreeNode* root, int k) {
-         
-        int count = 0;
-        int result = 0;
-        kthInorder(root, k, count, result);
-        return result;
-    }
-    
-    void kthInorder(TreeNode* root, int k, int& count, int& result){
-        if(root -> left)
-            kthInorder(root -> left, k, count, result);
-        count ++;
-        if (count == k){
-            result = root-> val;
-            return;
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+        priority_queue<vector<int>, vector<vector<int>>, ComparePoints> pq;
+        for(vector<int>& pt : points){
+            if(pq.size() < K)
+                pq.push(pt);
+            else{
+                const vector <int>& top = pq.top();
+                int d1 = top[0]* top[0] + top[1]*top[1];
+                int d2 = pt[0]* pt[0] + pt[1]*pt[1];
+                if (d1 > d2){
+                    pq.pop();
+                    pq.push(pt);
+                }
+            }
         }
-        if(root -> right)
-            kthInorder(root -> right, k, count, result);
+        
+        vector<vector<int>> result;
+        while(!pq.empty()){
+            result.push_back(pq.top());
+            pq.pop();
+        }
+        
+        return result;
+        
     }
 };
